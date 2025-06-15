@@ -19,6 +19,9 @@ public class SortingPricePage {
 	
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-LOGIN\"]")
 	public WebElement loginButton;
+	
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Modal Selector Button\"]/android.view.ViewGroup/android.view.ViewGroup/android.widget.ImageView")
+	public WebElement filterButton;
 
     public SortingPricePage(AndroidDriver driver) {
         this.driver = driver;
@@ -34,5 +37,9 @@ public class SortingPricePage {
 	
 	public void clickLoginButton() {
 		loginButton.click();
+	}
+	
+	public void clickFilterButton() {
+		filterButton.click();
 	}
 }

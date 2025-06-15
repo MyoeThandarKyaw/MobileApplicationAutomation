@@ -13,18 +13,17 @@ public class SortingPrice extends DriverFactory {
 
 	@BeforeClass
 	public void configure() throws MalformedURLException {
-
 		super.setUp();
-
 		sortingPricePage = new SortingPricePage(driver);
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
 	}
 
 	@Test
-	public void test() {
+	public void testPriceLowtoHigh() {
 		sortingPricePage.setUserName("standard_user");
 		sortingPricePage.setPassword("secret_sauce");
 		sortingPricePage.clickLoginButton();
+		sortingPricePage.clickFilterButton();
 	}
 
 }
