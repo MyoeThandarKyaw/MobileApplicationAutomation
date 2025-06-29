@@ -3,13 +3,14 @@
 <suite name="Failed suite [Sample Suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Sample Test(failed)">
     <classes>
-      <class name="demoapp.SampleProject.DemoApp">
+      <class name="demoapp.SampleProject.SortingPriceTest">
         <methods>
-          <include name="tearDown"/>
+          <include name="configure"/>
+          <include name="testPriceLowtoHigh"/>
           <include name="setUp"/>
-          <include name="testSampleApp"/>
+          <include name="testPriceHightoLow"/>
         </methods>
-      </class> <!-- demoapp.SampleProject.DemoApp -->
+      </class> <!-- demoapp.SampleProject.SortingPriceTest -->
     </classes>
   </test> <!-- Sample Test(failed) -->
 </suite> <!-- Failed suite [Sample Suite] -->
