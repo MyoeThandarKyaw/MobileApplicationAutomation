@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="demoapp.SampleProject.SortingPriceTest">
+      <class name="demoapp.SampleProject.CheckHamburgerMenu">
         <methods>
-          <include name="configure"/>
-          <include name="testPriceLowtoHigh"/>
-          <include name="setUp"/>
+          <include name="checkGeoLocation"/>
+          <include name="checkDrawing"/>
           <include name="tearDown"/>
-          <include name="secondTest"/>
+          <include name="beforeMethod"/>
+          <include name="setUp"/>
         </methods>
-      </class> <!-- demoapp.SampleProject.SortingPriceTest -->
+      </class> <!-- demoapp.SampleProject.CheckHamburgerMenu -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
