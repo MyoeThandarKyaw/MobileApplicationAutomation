@@ -8,22 +8,22 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class SwagLabsOnlineShopPage {
+public class RemoveProductBeforeCheckOutPage {
 	AndroidDriver driver;
-	@AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"test-Username\"]")
-	public WebElement user_Name;
 
-	@AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"test-Password\"]")
-	public WebElement user_Password;
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Toggle\"]/android.widget.ImageView")
+	public WebElement changeViewIcon;
 
-	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-LOGIN\"]")
-	public WebElement loginButton;
+	public RemoveProductBeforeCheckOutPage(AndroidDriver driver) {
+		this.driver = driver;
+		PageFactory.initElements(new AppiumFieldDecorator(driver), this); // ✅ important
+	}
 
-	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"ADD TO CART\"])[1]")
-	public WebElement addtoCardButton;
+	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"+\"])[1]")
+	public WebElement firstItem;
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Cart\"]/android.view.ViewGroup/android.widget.ImageView")
-	public WebElement clickCardButton;
+	public WebElement checkOut;
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-CHECKOUT\"]")
 	public WebElement clickCheckOutButton;
@@ -46,32 +46,20 @@ public class SwagLabsOnlineShopPage {
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-BACK HOME\"]")
 	public WebElement clickBackHomeButton;
 
-	public SwagLabsOnlineShopPage(AndroidDriver driver) {
-		this.driver = driver;
-		PageFactory.initElements(new AppiumFieldDecorator(driver), this);
+	public void clickChangeViewIcon() {
+		changeViewIcon.click();
 	}
 
-	public void setUserName(String userName) {
-		user_Name.sendKeys(userName);
+	public void clickFirstItem() {
+		firstItem.click();
 	}
 
-	public void setPassword(String password) {
-		user_Password.sendKeys(password);
-	}
-
-	public void clickLoginButton() {
-		loginButton.click();
-	}
-
-	public void clickAddtoCartButton() {
-		addtoCardButton.click();
-	}
-
-	public void clickCardButton() {
-		clickCardButton.click();
+	public void clickCheckOuticon() {
+		checkOut.click();
 	}
 
 	public void clickCheckOutButton() {
+		scrollToText("CHECKOUT");
 		clickCheckOutButton.click();
 	}
 

@@ -43,6 +43,7 @@ public class CheckHamburgerMenu extends DriverFactory{
 	public void checkDrawing() throws MalformedURLException {
 		checkHamBurgerMenuPage.clickHamburgerMenu();
 		checkHamBurgerMenuPage.clickDrawingItem();
+		checkHamBurgerMenuPage.drawImage();
 	}
 
 	@AfterClass
