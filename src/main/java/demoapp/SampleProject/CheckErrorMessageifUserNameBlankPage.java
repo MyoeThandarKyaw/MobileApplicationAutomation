@@ -8,13 +8,13 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class RemoveProductBeforeCheckOutPage {
+public class CheckErrorMessageifUserNameBlankPage {
 	AndroidDriver driver;
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Toggle\"]/android.widget.ImageView")
 	public WebElement changeViewIcon;
 
-	public RemoveProductBeforeCheckOutPage(AndroidDriver driver) {
+	public CheckErrorMessageifUserNameBlankPage(AndroidDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this); // ✅ important
 	}
@@ -24,15 +24,9 @@ public class RemoveProductBeforeCheckOutPage {
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Cart\"]/android.view.ViewGroup/android.widget.ImageView")
 	public WebElement checkOut;
-	
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"3\"]")
-	public WebElement productCount;
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-CHECKOUT\"]")
-	public WebElement clickCheckOutButton;
-	
-	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-REMOVE\"]")
-	public WebElement removeButton;
+	public WebElement clickCheckOutButton;	
 
 	@AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"test-First Name\"]")
 	public WebElement first_Name;
@@ -51,6 +45,9 @@ public class RemoveProductBeforeCheckOutPage {
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-BACK HOME\"]")
 	public WebElement clickBackHomeButton;
+	
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"First Name is required\"]")
+	public WebElement errorMessage;
 
 	public void clickChangeViewIcon() {
 		changeViewIcon.click();
@@ -63,24 +60,20 @@ public class RemoveProductBeforeCheckOutPage {
 	public void clickCheckOuticon() {
 		checkOut.click();
 	}
-
+	
 	public void clickCheckOutButton() {
 		scrollToText("CHECKOUT");
 		clickCheckOutButton.click();
 	}
 
-	public void setUserInformation(String firstName, String lastName, String zipCode) {
+	public void setUserInformation(String firstName, String LastName, String zipCode) {
 		first_Name.sendKeys(firstName);
-		last_Name.sendKeys(lastName);
+		last_Name.sendKeys(LastName);
 		zip_Code.sendKeys(zipCode);
 	}
 
 	public void clickContinueButton() {
 		continueButton.click();
-	}
-	
-	public void clickRemoveButton() {
-		removeButton.click();
 	}
 
 	public void clickFinishButton() {
@@ -98,7 +91,7 @@ public class RemoveProductBeforeCheckOutPage {
 		clickBackHomeButton.click();
 	}
 	
-	public String getItemCount() {
-		return productCount.getText();		
+	public String getErrorMessage() {
+		return errorMessage.getText();
 	}
 }

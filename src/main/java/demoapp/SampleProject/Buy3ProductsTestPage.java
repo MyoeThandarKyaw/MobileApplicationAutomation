@@ -26,7 +26,7 @@ public class Buy3ProductsTestPage {
 	public WebElement checkOut;
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-CHECKOUT\"]")
-	public WebElement clickCheckOutButton;
+	public WebElement clickCheckOutButton;	
 
 	@AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"test-First Name\"]")
 	public WebElement first_Name;
@@ -57,7 +57,7 @@ public class Buy3ProductsTestPage {
 	public void clickCheckOuticon() {
 		checkOut.click();
 	}
-
+	
 	public void clickCheckOutButton() {
 		scrollToText("CHECKOUT");
 		clickCheckOutButton.click();

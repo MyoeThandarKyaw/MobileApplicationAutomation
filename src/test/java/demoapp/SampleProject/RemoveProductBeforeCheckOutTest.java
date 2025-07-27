@@ -1,7 +1,5 @@
 package demoapp.SampleProject;
-
 import java.net.MalformedURLException;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,18 +15,21 @@ public class RemoveProductBeforeCheckOutTest extends DriverFactory{
 
 	}
 	@Test
-	public void testBuy3Products() {
+	public void testRemoveProductBeforeCheckOutPage() {
 		login();
 		removeProductBeforeCheckOutPage.clickChangeViewIcon();
-		for (int i = 0; i < 3; i++) {
+		for (int i = 0; i < 2; i++) {
 			removeProductBeforeCheckOutPage.clickFirstItem();
 		}
 		removeProductBeforeCheckOutPage.clickCheckOuticon();
-		removeProductBeforeCheckOutPage.clickCheckOutButton();
-		removeProductBeforeCheckOutPage.setUserInformation("Myoe Thandar", "Kyaw", "+95");
-		removeProductBeforeCheckOutPage.clickContinueButton();
-		removeProductBeforeCheckOutPage.clickFinishButton();
-		removeProductBeforeCheckOutPage.clickBackHomeButton();
+		//System.out.println(" getItemCount"+removeProductBeforeCheckOutPage.getItemCount());
+		removeProductBeforeCheckOutPage.clickRemoveButton();
+//		removeProductBeforeCheckOutPage.clickCheckOutButton();
+//		removeProductBeforeCheckOutPage.setUserInformation("Myoe Thandar", "Kyaw", "+95");
+//		removeProductBeforeCheckOutPage.clickContinueButton();
+//		removeProductBeforeCheckOutPage.clickFinishButton();
+//		removeProductBeforeCheckOutPage.clickBackHomeButton();
+//Need to fix doesn't click remove button
 
 	}
 	public void login() {
@@ -40,7 +41,7 @@ public class RemoveProductBeforeCheckOutTest extends DriverFactory{
 	@AfterClass
 	public void tearDown() {
 		if (driver != null) {
-			driver.quit();
+			//driver.quit();
 		}
 	}
 }
