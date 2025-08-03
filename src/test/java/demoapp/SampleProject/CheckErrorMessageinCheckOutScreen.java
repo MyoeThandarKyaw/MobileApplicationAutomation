@@ -10,9 +10,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 
-public class CheckErrorMessageifUserNameBlank extends DriverFactory {
+public class CheckErrorMessageinCheckOutScreen extends DriverFactory {
 	LoginPage loginPage;
-	CheckErrorMessageifUserNameBlankPage checkErrorMessageifUserNameBlankPage;
+	CheckErrorMessageinCheckOutScreenPage checkErrorMessageifUserNameBlankPage;
 	private Properties strings;
 
 	@BeforeClass
@@ -29,7 +29,8 @@ public class CheckErrorMessageifUserNameBlank extends DriverFactory {
 	@BeforeMethod
 	public void configure() throws MalformedURLException {
 		loginPage = new LoginPage(driver);
-		checkErrorMessageifUserNameBlankPage = new CheckErrorMessageifUserNameBlankPage(driver);
+		checkErrorMessageifUserNameBlankPage = new CheckErrorMessageinCheckOutScreenPage(driver);
+
 	}
 
 	@Test
@@ -41,10 +42,29 @@ public class CheckErrorMessageifUserNameBlank extends DriverFactory {
 		}
 		checkErrorMessageifUserNameBlankPage.clickCheckOuticon();
 		checkErrorMessageifUserNameBlankPage.clickCheckOutButton();
+
 		checkErrorMessageifUserNameBlankPage.setUserInformation("", "Kyaw", "+95");
 		checkErrorMessageifUserNameBlankPage.clickContinueButton();
-		String actualErrorMessage = checkErrorMessageifUserNameBlankPage.getErrorMessage();
+		String actualErrorMessage = checkErrorMessageifUserNameBlankPage.getErrorMessageforFirstNameBlank();
 		String expectedErrorMessage = strings.getProperty("first_name_error_message");
+		Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+	}
+
+	@Test
+	public void checkErrorMessageDisplayForLastNameBlank() {
+		checkErrorMessageifUserNameBlankPage.setUserInformation("Myoe", "", "+95");
+		checkErrorMessageifUserNameBlankPage.clickContinueButton();
+		String actualErrorMessage = checkErrorMessageifUserNameBlankPage.getErrorMessageforLastNameBlank();
+		String expectedErrorMessage = strings.getProperty("last_name_error_message");
+		Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
+	}
+
+	@Test
+	public void checkErrorMessageDisplayForZipCodeBlank() {
+		checkErrorMessageifUserNameBlankPage.setUserInformation("Myoe", "Thandar Kyaw", "");
+		checkErrorMessageifUserNameBlankPage.clickContinueButton();
+		String actualErrorMessage = checkErrorMessageifUserNameBlankPage.getErrorMessageforZipCodeBlank();
+		String expectedErrorMessage = strings.getProperty("zip_code_error_message");
 		Assert.assertEquals(actualErrorMessage, expectedErrorMessage);
 	}
 

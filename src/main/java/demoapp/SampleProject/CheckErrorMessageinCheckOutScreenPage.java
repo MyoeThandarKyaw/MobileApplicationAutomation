@@ -2,19 +2,18 @@ package demoapp.SampleProject;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
-
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class CheckErrorMessageifUserNameBlankPage {
+public class CheckErrorMessageinCheckOutScreenPage {
 	AndroidDriver driver;
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Toggle\"]/android.widget.ImageView")
 	public WebElement changeViewIcon;
 
-	public CheckErrorMessageifUserNameBlankPage(AndroidDriver driver) {
+	public CheckErrorMessageinCheckOutScreenPage(AndroidDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this); // ✅ important
 	}
@@ -26,7 +25,7 @@ public class CheckErrorMessageifUserNameBlankPage {
 	public WebElement checkOut;
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-CHECKOUT\"]")
-	public WebElement clickCheckOutButton;	
+	public WebElement clickCheckOutButton;
 
 	@AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"test-First Name\"]")
 	public WebElement first_Name;
@@ -45,9 +44,15 @@ public class CheckErrorMessageifUserNameBlankPage {
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-BACK HOME\"]")
 	public WebElement clickBackHomeButton;
-	
+
 	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"First Name is required\"]")
-	public WebElement errorMessage;
+	public WebElement errorMessageforFirstNameBlank;
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Last Name is required\"]")
+	public WebElement errorMessageforLastNameBlank;
+
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Postal Code is required\"]")
+	public WebElement errorMessageforZipCodeBlank;
 
 	public void clickChangeViewIcon() {
 		changeViewIcon.click();
@@ -60,7 +65,7 @@ public class CheckErrorMessageifUserNameBlankPage {
 	public void clickCheckOuticon() {
 		checkOut.click();
 	}
-	
+
 	public void clickCheckOutButton() {
 		scrollToText("CHECKOUT");
 		clickCheckOutButton.click();
@@ -90,8 +95,22 @@ public class CheckErrorMessageifUserNameBlankPage {
 	public void clickBackHomeButton() {
 		clickBackHomeButton.click();
 	}
-	
-	public String getErrorMessage() {
-		return errorMessage.getText();
+
+	public String getErrorMessageforFirstNameBlank() {
+		return errorMessageforFirstNameBlank.getText();
 	}
+
+	public String getErrorMessageforLastNameBlank() {
+		return errorMessageforLastNameBlank.getText();
+	}
+
+	public String getErrorMessageforZipCodeBlank() {
+		return errorMessageforZipCodeBlank.getText();
+	}
+
+//	public void setUserName(String username) {
+//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+//	    wait.until(ExpectedConditions.visibilityOf(usernameField));
+//	    usernameField.sendKeys(username);
+//	}
 }

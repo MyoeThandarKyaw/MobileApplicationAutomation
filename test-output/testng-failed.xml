@@ -5,10 +5,11 @@
     <classes>
       <class name="demoapp.SampleProject.CheckErrorMessageifUserNameBlank">
         <methods>
+          <include name="setup"/>
           <include name="tearDown"/>
           <include name="configure"/>
-          <include name="checkErrorMessageDisplay"/>
           <include name="setUp"/>
+          <include name="checkErrorMessageDisplayForZipCodeBlank"/>
         </methods>
       </class> <!-- demoapp.SampleProject.CheckErrorMessageifUserNameBlank -->
     </classes>
