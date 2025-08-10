@@ -3,15 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="demoapp.SampleProject.CheckErrorMessageifUserNameBlank">
+      <class name="demoapp.SampleProject.CheckRemoveProductfromDetailScreen">
         <methods>
-          <include name="setup"/>
+          <include name="checkRemoveProductfromDetailScreen"/>
           <include name="tearDown"/>
-          <include name="configure"/>
           <include name="setUp"/>
-          <include name="checkErrorMessageDisplayForZipCodeBlank"/>
+          <include name="configure"/>
         </methods>
-      </class> <!-- demoapp.SampleProject.CheckErrorMessageifUserNameBlank -->
+      </class> <!-- demoapp.SampleProject.CheckRemoveProductfromDetailScreen -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

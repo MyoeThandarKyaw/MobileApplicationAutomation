@@ -3,7 +3,6 @@ package demoapp.SampleProject;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.Properties;
-
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;

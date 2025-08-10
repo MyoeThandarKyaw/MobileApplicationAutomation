@@ -2,21 +2,22 @@ package demoapp.SampleProject;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
+
 import io.appium.java_client.MobileBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.pagefactory.AndroidFindBy;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
-public class CheckErrorMessageinCheckOutScreenPage {
+public class CancelCheckOutPage {
 	AndroidDriver driver;
-
-	public CheckErrorMessageinCheckOutScreenPage(AndroidDriver driver) {
+	
+	public CancelCheckOutPage(AndroidDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this); // ✅ important
 	}
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Toggle\"]/android.widget.ImageView")
-	public WebElement changeViewIcon;
+	public WebElement changeViewIcon;	
 
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"+\"])[1]")
 	public WebElement firstItem;
@@ -25,7 +26,7 @@ public class CheckErrorMessageinCheckOutScreenPage {
 	public WebElement checkOut;
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-CHECKOUT\"]")
-	public WebElement clickCheckOutButton;
+	public WebElement clickCheckOutButton;	
 
 	@AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"test-First Name\"]")
 	public WebElement first_Name;
@@ -36,23 +37,14 @@ public class CheckErrorMessageinCheckOutScreenPage {
 	@AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"test-Zip/Postal Code\"]")
 	public WebElement zip_Code;
 
-	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-CONTINUE\"]")
-	public WebElement continueButton;
+//	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-CONTINUE\"]")
+//	public WebElement continueButton;
+//
+	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"PRODUCTS\"]")
+	public WebElement pageLabel;
 
-	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-FINISH\"]")
-	public WebElement finishButton;
-
-	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-BACK HOME\"]")
-	public WebElement clickBackHomeButton;
-
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"First Name is required\"]")
-	public WebElement errorMessageforFirstNameBlank;
-
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Last Name is required\"]")
-	public WebElement errorMessageforLastNameBlank;
-
-	@AndroidFindBy(xpath = "//android.widget.TextView[@text=\"Postal Code is required\"]")
-	public WebElement errorMessageforZipCodeBlank;
+	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-CANCEL\"]")
+	public WebElement clickCancelButton;
 
 	public void clickChangeViewIcon() {
 		changeViewIcon.click();
@@ -65,7 +57,7 @@ public class CheckErrorMessageinCheckOutScreenPage {
 	public void clickCheckOuticon() {
 		checkOut.click();
 	}
-
+	
 	public void clickCheckOutButton() {
 		scrollToText("CHECKOUT");
 		clickCheckOutButton.click();
@@ -77,14 +69,14 @@ public class CheckErrorMessageinCheckOutScreenPage {
 		zip_Code.sendKeys(zipCode);
 	}
 
-	public void clickContinueButton() {
-		continueButton.click();
+	public String getPageLabel() {
+		return pageLabel.getText();
 	}
 
-	public void clickFinishButton() {
-		scrollToText("FINISH");
-		finishButton.click();
-	}
+//	public void clickFinishButton() {
+//		scrollToText("FINISH");
+//		finishButton.click();
+//	}
 
 	@SuppressWarnings("deprecation")
 	public void scrollToText(String text) {
@@ -92,25 +84,7 @@ public class CheckErrorMessageinCheckOutScreenPage {
 				+ ".scrollIntoView(new UiSelector().text(\"" + text + "\"))"));
 	}
 
-	public void clickBackHomeButton() {
-		clickBackHomeButton.click();
+	public void clickCancelButton() {
+		clickCancelButton.click();
 	}
-
-	public String getErrorMessageforFirstNameBlank() {
-		return errorMessageforFirstNameBlank.getText();
-	}
-
-	public String getErrorMessageforLastNameBlank() {
-		return errorMessageforLastNameBlank.getText();
-	}
-
-	public String getErrorMessageforZipCodeBlank() {
-		return errorMessageforZipCodeBlank.getText();
-	}
-
-//	public void setUserName(String username) {
-//	    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-//	    wait.until(ExpectedConditions.visibilityOf(usernameField));
-//	    usernameField.sendKeys(username);
-//	}
 }
