@@ -16,10 +16,10 @@ public class DriverFactory {
 	public void setUp() throws MalformedURLException {
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setCapability("platformName", "Android");
-		caps.setCapability("deviceName", "Galaxy A16 5G"); // "device" or real name from adb
-		caps.setCapability("udid", "R94XC07VMMV"); // optional if only one device connected
+		caps.setCapability("deviceName", "OPPO A53"); // "device" or real name from adb
+		caps.setCapability("udid", "d31cb226"); // optional if only one device connected
 		caps.setCapability("automationName", "UiAutomator2");
-		caps.setCapability("appium:platformVersion", "14");
+		caps.setCapability("appium:platformVersion", "12");
 		caps.setCapability("app",
 				"D:\\Testing Information\\AUTOMATION\\AUTOMATION-UPDATE\\SampleProject\\resources\\Onlineshop.apk");
 		caps.setCapability("appPackage", "com.swaglabsmobileapp");

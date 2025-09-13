@@ -1,5 +1,8 @@
 package demoapp.SampleProject;
 
+import java.io.IOException;
+import java.util.Properties;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
@@ -10,6 +13,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 
 public class Buy3ProductsTestPage {
 	AndroidDriver driver;
+	private Properties strings;
 
 	@AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Toggle\"]/android.widget.ImageView")
 	public WebElement changeViewIcon;
@@ -17,6 +21,13 @@ public class Buy3ProductsTestPage {
 	public Buy3ProductsTestPage(AndroidDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(new AppiumFieldDecorator(driver), this); // ✅ important
+		
+		strings = new Properties();
+		try {
+			strings.load(getClass().getResourceAsStream("/test-strings.properties"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@AndroidFindBy(xpath = "(//android.widget.TextView[@text=\"+\"])[1]")
@@ -59,7 +70,7 @@ public class Buy3ProductsTestPage {
 	}
 	
 	public void clickCheckOutButton() {
-		scrollToText("CHECKOUT");
+		scrollToText(strings.getProperty("check_out"));
 		clickCheckOutButton.click();
 	}
 
@@ -74,7 +85,7 @@ public class Buy3ProductsTestPage {
 	}
 
 	public void clickFinishButton() {
-		scrollToText("FINISH");
+		scrollToText(strings.getProperty("finish"));
 		finishButton.click();
 	}
 
