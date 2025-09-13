@@ -51,8 +51,8 @@ public class CancelCheckOut extends DriverFactory {
 	}
 
 	public void login() {
-		loginPage.setUserName("standard_user");
-		loginPage.setPassword("secret_sauce");
+		loginPage.setUserName(strings.getProperty("userName"));
+		loginPage.setPassword(strings.getProperty("password"));
 		loginPage.clickLoginButton();
 	}
 

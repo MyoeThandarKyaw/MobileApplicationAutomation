@@ -1,13 +1,29 @@
 package demoapp.SampleProject;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.Properties;
+
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class Buy3ProductsTest extends DriverFactory {
 	Buy3ProductsTestPage buy3ProductsTestPage;
 	LoginPage loginPage;
+	private Properties strings;
+	
+	@BeforeClass
+	public void setup() {
+		strings = new Properties();
+		try {
+			strings.load(getClass().getResourceAsStream("/test-strings.properties"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 	@BeforeMethod
 	public void configure() throws MalformedURLException {
@@ -33,8 +49,8 @@ public class Buy3ProductsTest extends DriverFactory {
 	}
 
 	public void login() {
-		loginPage.setUserName("standard_user");
-		loginPage.setPassword("secret_sauce");
+		loginPage.setUserName(strings.getProperty("userName"));
+		loginPage.setPassword(strings.getProperty("password"));
 		loginPage.clickLoginButton();
 	}
 
