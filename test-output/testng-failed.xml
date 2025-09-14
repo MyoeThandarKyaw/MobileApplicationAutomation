@@ -3,15 +3,15 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="demoapp.SampleProject.Buy3ProductsTest">
+      <class name="demoapp.SampleProject.CheckErrorMessageforLogoutUser">
         <methods>
           <include name="configure"/>
           <include name="setUp"/>
           <include name="tearDown"/>
+          <include name="checkErrorMessageforLogoutUser"/>
           <include name="setup"/>
-          <include name="testBuy3Products"/>
         </methods>
-      </class> <!-- demoapp.SampleProject.Buy3ProductsTest -->
+      </class> <!-- demoapp.SampleProject.CheckErrorMessageforLogoutUser -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
